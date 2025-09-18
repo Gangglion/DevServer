@@ -6,21 +6,24 @@ import io.ktor.client.engine.cio.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.server.auth.authenticate
 import io.ktor.server.request.receive
 import io.ktor.server.routing.*
 
 fun Route.wolRoutes() {
     route("/wol") {
-        post("start") {
-            val body = call.receive<String>()
-            // TODO : body base64 디코딩
-            // TODO : body 를 AES 키로 복호화 필요
-            // TODO : 복호화 한 Data Class DeSerialization
-            // TODO : 맥주소 추출
-            val testMac = Config.TEST_MAC
-            val session = getSession()
-            if(session != null) {
-                requestWol(session, testMac)
+        authenticate("auth-jwt") {
+            post("start") {
+                val body = call.receive<String>()
+                // TODO : body base64 디코딩
+                // TODO : body 를 AES 키로 복호화 필요
+                // TODO : 복호화 한 Data Class DeSerialization
+                // TODO : 맥주소 추출
+                val testMac = Config.TEST_MAC
+                val session = getSession()
+                if(session != null) {
+                    requestWol(session, testMac)
+                }
             }
         }
     }

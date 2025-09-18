@@ -8,6 +8,9 @@ object Config {
     val username = dotenv["IPTIME_USER_NAME"] ?: ""
     val passwd = dotenv["IPTIME_USER_PASSWD"] ?: ""
 
+    val jwtSecret = dotenv["JWT_SECRET"] ?: ""
+    val appKey = dotenv["APP_KEY"] ?: ""
+
     // Test
     val TEST_MAC=dotenv[""] ?: ""
 }

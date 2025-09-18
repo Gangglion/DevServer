@@ -17,8 +17,8 @@ fun Application.configureRouting() {
     }
     routing {
         route("/api") {
-            wolRoutes()
             authRoutes()
+            wolRoutes()
             fcmRoutes()
         }
     }

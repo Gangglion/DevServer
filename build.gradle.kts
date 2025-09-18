@@ -4,6 +4,7 @@ val logback_version: String by project
 plugins {
     kotlin("jvm") version "2.2.20"
     id("io.ktor.plugin") version "3.3.0"
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 group = "com.glion"
@@ -19,6 +20,8 @@ dependencies {
     implementation("io.ktor:ktor-server-status-pages")
     implementation("io.ktor:ktor-server-call-logging")
     implementation("io.ktor:ktor-server-content-negotiation")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.x.x")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.0")
     implementation("io.ktor:ktor-server-netty")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-server-config-yaml")
