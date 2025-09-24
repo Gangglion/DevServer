@@ -4,26 +4,24 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import java.io.File
 import java.security.SecureRandom
-import java.util.Base64
+import java.util.*
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.GCMParameterSpec
-import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
-class AesCryptUtil {
-    companion object {
-        const val PATH = "/home/devglion/devKey/aesKey"
-        const val AESTransformation = "AES/GCM/NoPadding"
-    }
+object AesCryptUtil {
+    private const val PATH = "/home/devglion/devKey/aesKey"
+    private const val AESTransformation = "AES/GCM/NoPadding"
+
     var key: ByteArray? = null
         private set
 
     /**
      * 클래스 생성 시 , 이미 존재하는 키 파일이 있다면 값을 가져옴
      */
-    init {
+    fun init() {
         if(isExistKeyFile()) {
             loadAesKey()
         }
@@ -61,7 +59,7 @@ class AesCryptUtil {
     }
 
     /**
-     * 생성한 AesKey 파일에 저장. 각 값을 사용할때는
+     * 생성한 AesKey 파일에 저장.
      */
     fun saveAesKeyInShared(key: ByteArray) {
         val file = File(PATH)

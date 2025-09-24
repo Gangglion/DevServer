@@ -10,7 +10,4 @@ object Config {
 
     val jwtSecret = dotenv["JWT_SECRET"] ?: ""
     val appKey = dotenv["APP_KEY"] ?: ""
-
-    // Test
-    val TEST_MAC=dotenv[""] ?: ""
 }
