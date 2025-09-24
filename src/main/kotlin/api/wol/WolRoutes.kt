@@ -86,9 +86,6 @@ suspend fun requestWol(sess: String, mac: String) : Boolean {
         header("User-Agent", "Apache-HttpClient/UNAVAILABLE (java 1.4)")
     }
 
-    println("응답 코드 : ${response.status}")
-    println("응답 바디 : ${response.bodyAsText()}")
-
     client.close()
 
     return response.status.value == 200
